@@ -1,5 +1,8 @@
 import requests
 import time
+import sys
+sys.stdout.reconfigure(encoding='utf-8')
+
 
 # Configuration
 ZAP_URL = "http://localhost:8081"

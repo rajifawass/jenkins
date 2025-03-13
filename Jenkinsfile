@@ -54,6 +54,13 @@ pipeline {
             }
         }
 
+        stage('Passive Scan') {
+            steps {
+                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test\\passive_scan.py'
+            }
+        }
+
+
         // stage('Run form_authentication') {
         //     steps {
         //         bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\form_autentification.py'

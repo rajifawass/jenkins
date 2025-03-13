@@ -13,7 +13,7 @@ pipeline {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" -m venv venv'
             }
         }
-
+ 
         stage('Install Dependencies') {
             steps {
                 bat 'composer install'
@@ -41,7 +41,7 @@ pipeline {
             }
         }
 
-        /*
+        
         stage('Run spider') {
             steps {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\spider.py'
@@ -54,12 +54,12 @@ pipeline {
             }
         }
 
-        stage('Run form_authentication') {
-            steps {
-                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\form_autentification.py'
-            }
-        }
-        */
+        // stage('Run form_authentication') {
+        //     steps {
+        //         bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\form_autentification.py'
+        //     }
+        // }
+        
 
     }
 

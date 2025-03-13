@@ -44,7 +44,7 @@ pipeline {
         
         stage('Run spider') {
             steps {
-                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test\\spider.py'
+                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test\\spider_scan.py'
             }
         }
 

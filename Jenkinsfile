@@ -40,6 +40,7 @@ pipeline {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\automatisation_sqlmap.py'
             }
         }
+        /*
 
         stage('Run spider') {
             steps {
@@ -59,6 +60,7 @@ pipeline {
             }
         }
     }
+    */
 
     post {
         always {

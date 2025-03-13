@@ -1,0 +1,15 @@
+{
+    "name": "user/jenkins",
+    "autoload": {
+        "psr-4": {
+            "User\\Jenkins\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Fawass",
+            "email": "rajifawass345@gmail.com"
+        }
+    ],
+    "require": {}
+}

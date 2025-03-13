@@ -50,7 +50,7 @@ pipeline {
 
         stage('Run Scan_active') {
             steps {
-                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\active_scan.py'
+                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test\\active_scan.py'
             }
         }
 

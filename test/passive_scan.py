@@ -1,5 +1,10 @@
 import requests
 import time
+import sys
+import codecs
+
+sys.stdout = codecs.getwriter("utf-8")(sys.stdout.buffer)
+
 
 # Configuration
 ZAP_URL = "http://localhost:8081"

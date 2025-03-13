@@ -19,8 +19,8 @@ pipeline {
                 bat 'composer install'
             }
         }
-        /*
 
+        /*
         stage('Static Code Analysis') {
             steps {
                 script {
@@ -40,8 +40,8 @@ pipeline {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\automatisation_sqlmap.py'
             }
         }
-        /*
 
+        /*
         stage('Run spider') {
             steps {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\spider.py'
@@ -59,8 +59,9 @@ pipeline {
                 bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\form_autentification.py'
             }
         }
+        */
+
     }
-    */
 
     post {
         always {

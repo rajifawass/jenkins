@@ -14,19 +14,7 @@ def get_scan_status(scan_id):
         return response.json().get("status", "0")
     return "0"
 
-# Étape 1 : Explorer le site avec Spider
-spider_url = f"{ZAP_URL}/JSON/spider/action/scan/?apikey={API_KEY}&url={TARGET_URL}&maxChildren=10"
-spider_response = requests.get(spider_url)
-
-if spider_response.status_code == 200:
-    print("🕷️ Exploration du site en cours...")
-else:
-    print(f"❌ Erreur lors de l'exploration : {spider_response.text}")
-    exit(1)
-
-time.sleep(5)  # Attends quelques secondes pour laisser le Spider explorer
-
-# Étape 2 : Démarrer le scan actif
+# Étape 1 : Démarrer le scan actif
 scan_url = f"{ZAP_URL}/JSON/ascan/action/scan/?apikey={API_KEY}&url={TARGET_URL}&recurse=true"
 scan_response = requests.get(scan_url)
 
@@ -47,7 +35,7 @@ while True:
 
 print("✅ Scan actif terminé !")
 
-# Étape 3 : Récupérer les alertes trouvées
+# Étape 2 : Récupérer les alertes trouvées
 alerts_url = f"{ZAP_URL}/JSON/core/view/alerts/?apikey={API_KEY}&baseurl={TARGET_URL}"
 alerts_response = requests.get(alerts_url)
 

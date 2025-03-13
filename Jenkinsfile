@@ -42,11 +42,11 @@ pipeline {
         }
 
         
-        stage('Run spider') {
-            steps {
-                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\spider.py'
-            }
-        }
+        // stage('Run spider') {
+        //     steps {
+        //         bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\spider.py'
+        //     }
+        // }
 
         stage('Run Scan_active') {
             steps {

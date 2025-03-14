@@ -20,7 +20,7 @@ pipeline {
             }
         }
 
-        /*
+        
         stage('Static Code Analysis') {
             steps {
                 script {
@@ -33,7 +33,7 @@ pipeline {
                 }
             }
         }
-        */
+        
 
         stage('SQL Injection Test (Automatisation)') {
             steps {

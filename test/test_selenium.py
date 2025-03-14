@@ -36,6 +36,7 @@ driver.find_element(By.TAG_NAME, "button").click()  # Cliquer sur le bouton d'in
 
 time.sleep(3)  # Attente pour la redirection
 
+# Aller à la page de connexion
 driver.get("http://localhost/salon/login.php")  # Aller à la page de connexion
 
 time.sleep(2)

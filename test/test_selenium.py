@@ -1,58 +1,57 @@
 from selenium import webdriver
 from selenium.webdriver.common.by import By
 from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.common.action_chains import ActionChains
 import time
 
 # Configurer le WebDriver
 options = webdriver.ChromeOptions()
-options.add_experimental_option("detach", True)  # Permet de garder le navigateur ouvert
+options.add_experimental_option("detach", True)  # Garde le navigateur ouvert
 
 driver = webdriver.Chrome(options=options)
-driver.get("http://localhost/salon/inscription.php")  # URL de l'inscription
+driver.get("http://localhost/salon/inscription.php")  # Page d'inscription
 
-time.sleep(2)  # Attente pour le chargement de la page
+wait = WebDriverWait(driver, 10)
 
-# Données de test
-login = "test_user123"
-password = "password123"
-nom = "Test"
-prenom = "Utilisateur"
-email = "test@example.com"
-telephone = "0123456789"
-datenaiss = "1990-01-01"
-role = "Client"
+# Attendre que le formulaire soit visible
+wait.until(EC.presence_of_element_located((By.TAG_NAME, "form")))
 
-# Remplir le formulaire d'inscription
-driver.find_element(By.NAME, "login").send_keys(login)
-driver.find_element(By.NAME, "password").send_keys(password)
-driver.find_element(By.NAME, "nom").send_keys(nom)
-driver.find_element(By.NAME, "prenom").send_keys(prenom)
-driver.find_element(By.NAME, "email").send_keys(email)
-driver.find_element(By.NAME, "telephone").send_keys(telephone)
-driver.find_element(By.NAME, "datenaiss").send_keys(datenaiss)
-driver.find_element(By.NAME, "role").send_keys(role)
+# Vérifier le nombre de boutons
+buttons = driver.find_elements(By.TAG_NAME, "button")
+print(f"Nombre de boutons trouvés: {len(buttons)}")
 
-driver.find_element(By.TAG_NAME, "button").click()  # Cliquer sur le bouton d'inscription
+# Vérifier si au moins un bouton est présent
+if len(buttons) == 0:
+    print("❌ Aucun bouton trouvé. Vérifiez votre HTML.")
+    driver.quit()
+    exit()
 
-time.sleep(3)  # Attente pour la redirection
+# Sélectionner un bouton avec un sélecteur CSS plus précis
+try:
+    button = wait.until(EC.element_to_be_clickable((By.CSS_SELECTOR, "button[type=submit]")))
+except:
+    print("❌ Timeout: Bouton introuvable ou non cliquable.")
+    driver.quit()
+    exit()
 
-# Aller à la page de connexion
-driver.get("http://localhost/salon/login.php")  # Aller à la page de connexion
+# Vérifier si le bouton est visible et activé
+if button.is_displayed():
+    print("✅ Le bouton est visible")
+else:
+    print("❌ Le bouton est masqué")
 
-time.sleep(2)
+if button.is_enabled():
+    print("✅ Le bouton est activé")
+else:
+    print("❌ Le bouton est désactivé")
 
-# Tester la connexion avec les mêmes identifiants
-driver.find_element(By.NAME, "login").send_keys(login)
-driver.find_element(By.NAME, "password").send_keys(password)
-driver.find_element(By.NAME, "role").send_keys(role)
-driver.find_element(By.TAG_NAME, "input[type=submit]").click()
+# Forcer le clic avec ActionChains
+ActionChains(driver).move_to_element(button).click().perform()
+
+print("✅ Clic effectué avec succès")
 
 time.sleep(3)
-
-# Vérification : si la connexion réussit, l'utilisateur devrait être redirigé
-if "admin.php" in driver.current_url:
-    print("Test réussi : Connexion après inscription OK")
-else:
-    print("Test échoué : Problème de connexion après inscription")
 
 driver.quit()

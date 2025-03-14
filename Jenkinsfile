@@ -63,7 +63,7 @@ pipeline {
 
         stage('Run form_authentication') {
             steps {
-                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" tests\\test_selenium.py'
+                bat '"C:\\Users\\user\\AppData\\Local\\Programs\\Python\\Python313\\python.exe" test\\test_selenium.py'
             }
         }
         

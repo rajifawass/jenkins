@@ -25,7 +25,7 @@ pipeline {
             steps {
                 script {
                     def exitCode = bat(returnStatus: true, script: '''
-                        vendor\bin\phpstan analyse --level=max src/ --no-progress --error-format=table --memory-limit=2G
+                        vendor/bin/phpstan analyse --level=max src/ --no-progress --error-format=table --memory-limit=2G
                     ''')
                     if (exitCode != 0) {
                         echo "PHPStan a trouvé des erreurs, mais on continue l'exécution du pipeline."
